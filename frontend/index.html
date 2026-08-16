@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>PDF Handler</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <h1>PDF Handler</h1>
+
+    <p>
+        Choose a PDF operation
+    </p>
+
+
+    <div class="tools">
+
+
+        <!-- ========================= -->
+        <!-- MERGE PDF -->
+        <!-- ========================= -->
+
+        <div class="tool-card">
+
+            <h2>Merge PDF</h2>
+
+            <p>
+                Combine multiple PDF files into one.
+            </p>
+
+            <input
+                type="file"
+                id="pdfFiles"
+                accept=".pdf"
+                multiple
+            >
+
+            <div id="fileList"></div>
+
+            <button id="mergeButton">
+                Merge PDFs
+            </button>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- EXTRACT PDF -->
+        <!-- ========================= -->
+
+        <div class="tool-card">
+
+            <h2>Extract Pages</h2>
+
+            <p>
+                Select a PDF and extract a range of pages.
+            </p>
+
+
+            <input
+                type="file"
+                id="extractPdf"
+                accept=".pdf"
+            >
+
+
+            <!-- PDF INFORMATION -->
+
+            <div
+                id="pdfInfo"
+                class="pdf-info"
+            >
+                No PDF selected
+            </div>
+
+
+            <!-- PDF PREVIEW -->
+
+            <div
+                id="previewContainer"
+                class="preview-container"
+            >
+
+                <img
+                    id="pdfPreview"
+                    alt="PDF Preview"
+                >
+
+            </div>
+
+
+            <!-- PAGE NAVIGATION -->
+
+            <div
+                id="pageNavigation"
+                class="page-navigation"
+            >
+
+                <button
+                    id="previousPage"
+                    disabled
+                >
+                    Previous
+                </button>
+
+
+                <span id="pageNumber">
+                    Page 0 / 0
+                </span>
+
+
+                <button
+                    id="nextPage"
+                    disabled
+                >
+                    Next
+                </button>
+
+            </div>
+
+
+            <!-- EXTRACTION RANGE -->
+
+            <div class="extract-range">
+
+                <div>
+
+                    <label for="startPage">
+                        Start Page
+                    </label>
+
+                    <input
+                        type="number"
+                        id="startPage"
+                        min="1"
+                        value="1"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label for="endPage">
+                        End Page
+                    </label>
+
+                    <input
+                        type="number"
+                        id="endPage"
+                        min="1"
+                        value="1"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <button id="extractButton">
+
+                Extract Pages
+
+            </button>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <div class="tool-card">
+
+    <h2>Search PDF</h2>
+
+    <p>
+        Search for text inside a PDF.
+    </p>
+
+    <input
+        type="file"
+        id="searchPdfFile"
+        accept=".pdf"
+    >
+
+    <div
+        id="searchFileName"
+        class="selected-file"
+    ></div>
+
+    <input
+        type="text"
+        id="searchText"
+        placeholder="Enter text to search..."
+        class="search-input"
+    >
+
+    <button id="searchButton">
+        Search PDF
+    </button>
+
+    <div id="searchResults"></div>
+
+</div>
+
+
+        <!-- COMPRESS -->
+
+        <div class="tool-card">
+
+    <h2>Compress PDF</h2>
+
+    <p>
+        Reduce PDF file size.
+    </p>
+
+    <input
+        type="file"
+        id="compressPdfFile"
+        accept=".pdf"
+    >
+
+    <div
+        id="compressFileName"
+        class="selected-file"
+    ></div>
+
+
+    <select
+        id="compressionQuality"
+        class="compression-select"
+    >
+
+        <option value="low">
+            Strong Compression
+        </option>
+
+        <option value="medium" selected>
+            Balanced
+        </option>
+
+        <option value="high">
+            High Quality
+        </option>
+
+    </select>
+
+
+    <button id="compressButton">
+        Compress PDF
+    </button>
+
+
+    <div id="compressStatus"></div>
+
+</div>
+
+        <!-- CONVERT -->
+
+        <div class="tool-card">
+
+    <h2>PDF → Images</h2>
+
+    <p>
+        Convert PDF pages into images.
+    </p>
+
+
+    <input
+        type="file"
+        id="convertPdfFile"
+        accept=".pdf"
+    >
+
+
+    <div
+        id="convertFileName"
+        class="selected-file"
+    ></div>
+
+
+    <!-- Image Format -->
+
+    <select
+        id="imageFormat"
+        class="compression-select"
+    >
+
+        <option value="png">
+            PNG
+        </option>
+
+        <option value="jpg">
+            JPG
+        </option>
+
+    </select>
+
+
+    <!-- DPI -->
+
+    <select
+        id="imageDpi"
+        class="compression-select"
+    >
+
+        <option value="72">
+            72 DPI - Fast
+        </option>
+
+        <option value="150" selected>
+            150 DPI - Balanced
+        </option>
+
+        <option value="200">
+            200 DPI - High Quality
+        </option>
+
+        <option value="300">
+            300 DPI - Very High Quality
+        </option>
+
+    </select>
+
+
+    <button id="convertButton">
+        Convert to Images
+    </button>
+
+
+    <div id="convertStatus"></div>
+
+</div>
+
+
+    </div>
+
+
+    <p id="status"></p>
+
+</div>
+
+
+<script src="js/app.js"></script>
+
+</body>
+
+</html>
