@@ -8,6 +8,7 @@ from app.routes.compress import router as compress_router
 from app.routes.convert import router as convert_router
 from app.routes.editor import router as editor_router
 
+from app.routes.image_to_pdf import router as image_to_pdf_router
 
 app = FastAPI(
     title="PDF Handler API",
@@ -37,3 +38,7 @@ app.include_router(search_router)
 app.include_router(compress_router)
 app.include_router(convert_router)
 app.include_router(editor_router)
+app.include_router(
+    image_to_pdf_router,
+    prefix="/convert"
+)

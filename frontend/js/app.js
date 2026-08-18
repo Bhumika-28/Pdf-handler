@@ -1128,3 +1128,202 @@ convertButton.addEventListener(
     }
 );
 
+// =========================================
+// IMAGES → PDF
+// =========================================
+
+const imageFilesInput =
+    document.getElementById("imageFiles");
+
+const imageList =
+    document.getElementById("imageList");
+
+const imageToPdfButton =
+    document.getElementById("imageToPdfButton");
+
+const pageSize =
+    document.getElementById("pageSize");
+
+const imageOrientation =
+    document.getElementById("imageOrientation");
+
+
+// -----------------------------------------
+// Image Selection
+// -----------------------------------------
+
+if (imageFilesInput) {
+
+    imageFilesInput.addEventListener(
+        "change",
+        function () {
+
+            const files = Array.from(
+                imageFilesInput.files
+            );
+
+            imageList.innerHTML = "";
+
+            if (files.length === 0) {
+
+                imageList.textContent =
+                    "No images selected";
+
+                imageToPdfButton.disabled = true;
+
+                return;
+            }
+
+
+            files.forEach(
+                function (file, index) {
+
+                    const item =
+                        document.createElement("div");
+
+                    item.className =
+                        "image-list-item";
+
+                    item.textContent =
+                        `${index + 1}. ${file.name}`;
+
+                    imageList.appendChild(item);
+                }
+            );
+
+
+            imageToPdfButton.disabled = false;
+        }
+    );
+}
+
+
+// -----------------------------------------
+// Convert Images → PDF
+// -----------------------------------------
+
+if (imageToPdfButton) {
+
+    imageToPdfButton.addEventListener(
+        "click",
+        async function () {
+
+            const files =
+                Array.from(
+                    imageFilesInput.files
+                );
+
+            if (files.length === 0) {
+
+                alert(
+                    "Please select at least one image."
+                );
+
+                return;
+            }
+
+
+            const formData =
+                new FormData();
+
+
+            // Add images
+            files.forEach(
+                function (file) {
+
+                    formData.append(
+                        "files",
+                        file
+                    );
+                }
+            );
+
+
+            // Add options
+            formData.append(
+                "page_size",
+                pageSize.value
+            );
+
+            formData.append(
+                "orientation",
+                imageOrientation.value
+            );
+
+
+            try {
+
+                imageToPdfButton.disabled = true;
+
+                imageToPdfButton.textContent =
+                    "Converting...";
+
+
+                const response =
+                    await fetch(
+                        "http://127.0.0.1:8000/convert/images-to-pdf",
+                        {
+                            method: "POST",
+                            body: formData
+                        }
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "PDF conversion failed"
+                    );
+                }
+
+
+                const blob =
+                    await response.blob();
+
+
+                // Create download URL
+                const url =
+                    window.URL.createObjectURL(
+                        blob
+                    );
+
+
+                const link =
+                    document.createElement("a");
+
+                link.href = url;
+
+                link.download =
+                    "images_to_pdf.pdf";
+
+                document.body.appendChild(link);
+
+                link.click();
+
+                link.remove();
+
+                window.URL.revokeObjectURL(
+                    url
+                );
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert(
+                    "Failed to convert images to PDF."
+                );
+
+            } finally {
+
+                imageToPdfButton.disabled = false;
+
+                imageToPdfButton.textContent =
+                    "Convert to PDF";
+            }
+
+        }
+    );
+}
+

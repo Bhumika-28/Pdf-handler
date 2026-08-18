@@ -1638,3 +1638,183 @@ button:disabled {
     }
 }
 
+.tools {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* =========================================
+   IMAGES → PDF
+========================================= */
+
+.image-list {
+    position: relative;
+
+    z-index: 3;
+
+    margin: 18px 0;
+
+    padding: 12px;
+
+    min-height: 45px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8fafc,
+            #eef2ff
+        );
+
+    border:
+        1px solid
+        rgba(99, 102, 241, 0.12);
+
+    color: #475569;
+
+    font-size: 14px;
+
+    transform: translateZ(12px);
+}
+
+
+.image-list-item {
+    padding: 9px 12px;
+
+    margin-bottom: 7px;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    border:
+        1px solid
+        rgba(99, 102, 241, 0.10);
+
+    color: #334155;
+
+    box-shadow:
+        0 3px 8px
+        rgba(0, 0, 0, 0.05);
+}
+
+
+.image-list-item:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================
+   IMAGE PDF SELECT
+========================================= */
+
+.tool-card select {
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+
+    padding: 13px 14px;
+
+    margin-top: 12px;
+
+    border:
+        2px solid
+        #c7d2fe;
+
+    border-radius: 11px;
+
+    background: #f8faff;
+
+    color: #334155;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    outline: none;
+
+    transform: translateZ(15px);
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.tool-card select:focus {
+
+    border-color:
+        var(--primary);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(99, 102, 241, 0.12);
+
+    transform:
+        translateY(-2px)
+        translateZ(20px);
+}
+
+
+/* =========================================
+   IMAGE PDF BUTTON
+========================================= */
+
+#imageToPdfButton {
+
+    margin-top: 18px;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .image-list {
+
+        font-size: 13px;
+
+    }
+
+    .tool-card select {
+
+        padding: 12px;
+
+    }
+
+}
+
+.tools {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* =========================================
+   PDF -> IMAGES & IMAGES -> PDF
+   SAME SIZE / SAME ROW
+========================================= */
+
+.tools {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
+}
+
+.tools .tool-card {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Keep conversion cards equal height */
+.tools .tool-card:nth-last-child(2),
+.tools .tool-card:nth-last-child(1) {
+    min-height: 420px;
+}
