@@ -6,6 +6,7 @@ from app.routes.extract import router as extract_router
 from app.routes.search import router as search_router
 from app.routes.compress import router as compress_router
 from app.routes.convert import router as convert_router
+from app.routes.editor import router as editor_router
 
 
 app = FastAPI(
@@ -35,3 +36,4 @@ app.include_router(extract_router)
 app.include_router(search_router)
 app.include_router(compress_router)
 app.include_router(convert_router)
+app.include_router(editor_router)
