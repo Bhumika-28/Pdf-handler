@@ -1,0 +1,624 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+
+    margin: 0;
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #050816,
+            #0b1026,
+            #11142e
+        );
+
+    color: white;
+
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.editor-page {
+
+    height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.editor-header {
+
+    height: 70px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 22px;
+
+    background: #11162a;
+
+    border-bottom:
+        1px solid #252b44;
+
+    gap: 20px;
+}
+
+
+.editor-header h1 {
+
+    margin: 0;
+
+    font-size: 24px;
+
+    font-weight: 700;
+}
+
+
+.back-button {
+
+    border: none;
+
+    padding: 9px 16px;
+
+    border-radius: 8px;
+
+    background: #252b44;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+
+.back-button:hover {
+
+    background: #343b5c;
+}
+
+
+.header-actions {
+
+    margin-left: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.open-pdf-button,
+.open-large-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 10px 18px;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #8b5cf6
+        );
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.open-pdf-button:hover,
+.open-large-button:hover {
+
+    filter: brightness(1.1);
+}
+
+
+.header-actions button {
+
+    border: none;
+
+    padding: 10px 18px;
+
+    border-radius: 8px;
+
+    background: #10b981;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+
+.header-actions button:disabled {
+
+    opacity: 0.4;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================
+   TOOLBAR
+========================================= */
+
+.toolbar {
+
+    min-height: 58px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 0 20px;
+
+    background: #0d1224;
+
+    border-bottom:
+        1px solid #252b44;
+}
+
+
+.toolbar button {
+
+    border: none;
+
+    padding: 9px 14px;
+
+    border-radius: 8px;
+
+    background: #252b44;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 13px;
+}
+
+
+.toolbar button:hover:not(:disabled) {
+
+    background: #3a4265;
+}
+
+
+.toolbar button:disabled {
+
+    opacity: 0.35;
+
+    cursor: not-allowed;
+}
+
+
+.editor-status {
+
+    margin-left: auto;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   WORKSPACE
+========================================= */
+
+.workspace {
+
+    flex: 1;
+
+    min-height: 0;
+
+    display: flex;
+}
+
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.pages-sidebar {
+
+    width: 220px;
+
+    flex-shrink: 0;
+
+    background: #11162a;
+
+    border-right:
+        1px solid #252b44;
+
+    overflow-y: auto;
+
+    padding: 15px;
+}
+
+
+.sidebar-title {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+.sidebar-title span:last-child {
+
+    padding: 3px 8px;
+
+    border-radius: 10px;
+
+    background: #252b44;
+
+    color: #cbd5e1;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   PAGE THUMBNAILS
+========================================= */
+
+.page-item {
+
+    margin-bottom: 14px;
+
+    padding: 8px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    border: 2px solid transparent;
+
+    background: #181e34;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.page-item:hover {
+
+    background: #202844;
+
+    transform: translateY(-2px);
+}
+
+
+.page-item.selected {
+
+    border-color: #6366f1;
+
+    background: #242c4a;
+}
+
+
+.page-thumbnail {
+
+    width: 100%;
+
+    min-height: 150px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: white;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+}
+
+
+.page-thumbnail img {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+}
+
+
+.page-number {
+
+    display: block;
+
+    text-align: center;
+
+    margin-top: 7px;
+
+    color: #cbd5e1;
+
+    font-size: 12px;
+}
+
+
+.empty-pages {
+
+    padding: 30px 10px;
+
+    text-align: center;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   PREVIEW AREA
+========================================= */
+
+.preview-area {
+
+    flex: 1;
+
+    min-width: 0;
+
+    min-height: 0;
+
+    background: #080b18;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: auto;
+
+    padding: 30px;
+}
+
+
+/* =========================================
+   EMPTY PREVIEW
+========================================= */
+
+.empty-preview {
+
+    text-align: center;
+
+    color: #94a3b8;
+}
+
+
+.empty-icon {
+
+    font-size: 65px;
+
+    margin-bottom: 15px;
+}
+
+
+.empty-preview h2 {
+
+    margin: 0 0 8px;
+
+    color: #e2e8f0;
+}
+
+
+.empty-preview p {
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   PDF PREVIEW
+========================================= */
+
+.pdf-preview {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: none;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+.preview-header {
+
+    width: 100%;
+
+    padding-bottom: 15px;
+
+    color: #cbd5e1;
+
+    text-align: center;
+
+    font-size: 14px;
+}
+
+
+.page-canvas-container {
+
+    flex: 1;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    overflow: auto;
+
+    padding: 10px;
+}
+
+
+#pageImage {
+
+    display: block;
+
+    max-width: min(850px, 90%);
+
+    height: auto;
+
+    background: white;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0, 0, 0, 0.45);
+
+    border-radius: 2px;
+}
+
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+.pages-sidebar::-webkit-scrollbar,
+.preview-area::-webkit-scrollbar,
+.page-canvas-container::-webkit-scrollbar {
+
+    width: 8px;
+
+    height: 8px;
+}
+
+
+.pages-sidebar::-webkit-scrollbar-track,
+.preview-area::-webkit-scrollbar-track,
+.page-canvas-container::-webkit-scrollbar-track {
+
+    background: #0b1020;
+}
+
+
+.pages-sidebar::-webkit-scrollbar-thumb,
+.preview-area::-webkit-scrollbar-thumb,
+.page-canvas-container::-webkit-scrollbar-thumb {
+
+    background: #303852;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .pages-sidebar {
+
+        width: 130px;
+
+    }
+
+
+    .page-thumbnail {
+
+        min-height: 100px;
+
+    }
+
+
+    .toolbar {
+
+        overflow-x: auto;
+
+    }
+
+
+    .editor-status {
+
+        display: none;
+
+    }
+
+
+    .editor-header h1 {
+
+        font-size: 18px;
+
+    }
+
+
+    .back-button {
+
+        padding: 8px 10px;
+
+    }
+
+
+    .open-pdf-button {
+
+        padding: 8px 10px;
+
+    }
+
+}

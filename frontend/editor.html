@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>PDF Editor</title>
+
+    <link
+        rel="stylesheet"
+        href="css/editor.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="editor-page">
+
+
+    <!-- ========================= -->
+    <!-- HEADER -->
+    <!-- ========================= -->
+
+    <header class="editor-header">
+
+        <button
+            id="backButton"
+            class="back-button"
+        >
+            ← Back
+        </button>
+
+
+        <h1>PDF Editor</h1>
+
+
+        <div class="header-actions">
+
+            <label class="open-pdf-button">
+
+                Open PDF
+
+                <input
+                    type="file"
+                    id="pdfInput"
+                    accept=".pdf"
+                    hidden
+                >
+
+            </label>
+
+
+            <button
+                id="saveButton"
+                disabled
+            >
+                Save PDF
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ========================= -->
+    <!-- TOOLBAR -->
+    <!-- ========================= -->
+
+    <div class="toolbar">
+
+        <button
+            id="rotateLeftButton"
+            disabled
+        >
+            ↶ Rotate Left
+        </button>
+
+
+        <button
+            id="rotateRightButton"
+            disabled
+        >
+            ↷ Rotate Right
+        </button>
+
+
+        <button
+            id="insertButton"
+            disabled
+        >
+            ＋ Insert PDF
+        </button>
+
+
+        <button
+            id="deleteButton"
+            disabled
+        >
+            🗑 Delete Page
+        </button>
+
+
+        <input
+            type="file"
+            id="insertInput"
+            accept=".pdf"
+            hidden
+        >
+
+
+        <span
+            id="editorStatus"
+            class="editor-status"
+        >
+            Open a PDF to start editing
+        </span>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- WORKSPACE -->
+    <!-- ========================= -->
+
+    <main class="workspace">
+
+
+        <!-- PAGE SIDEBAR -->
+
+        <aside class="pages-sidebar">
+
+            <div class="sidebar-title">
+
+                <span>Pages</span>
+
+                <span id="pageCount">
+                    0
+                </span>
+
+            </div>
+
+
+            <div id="pageList">
+
+                <div class="empty-pages">
+
+                    Open a PDF
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- PDF PREVIEW -->
+
+        <section class="preview-area">
+
+
+            <div
+                id="emptyPreview"
+                class="empty-preview"
+            >
+
+                <div class="empty-icon">
+                    📄
+                </div>
+
+                <h2>
+                    No PDF Open
+                </h2>
+
+                <p>
+                    Click "Open PDF" to start editing.
+                </p>
+
+
+                <label class="open-large-button">
+
+                    Open PDF
+
+                    <input
+                        type="file"
+                        id="pdfInputLarge"
+                        accept=".pdf"
+                        hidden
+                    >
+
+                </label>
+
+            </div>
+
+
+            <div
+                id="pdfPreview"
+                class="pdf-preview"
+            >
+
+                <div class="preview-header">
+
+                    <span id="currentPageText">
+                        Page 0
+                    </span>
+
+                </div>
+
+
+                <div class="page-canvas-container">
+
+                    <img
+                        id="pageImage"
+                        alt="PDF Page"
+                    >
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+<script src="js/editor.js"></script>
+
+
+</body>
+
+</html>

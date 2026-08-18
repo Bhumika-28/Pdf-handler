@@ -1637,4 +1637,13 @@ button:disabled {
         gap: 4px;
     }
 }
+/* ========================================
+   PDF EDITOR BUTTON
+======================================== */
 
+.editor-button {
+    width: 100%;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 600;
+}

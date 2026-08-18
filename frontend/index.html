@@ -35,6 +35,29 @@
 
 
         <!-- ========================= -->
+        <!-- PDF EDITOR -->
+        <!-- ========================= -->
+
+        <div class="tool-card">
+
+            <h2>PDF Editor</h2>
+
+            <p>
+                Edit your PDF pages with Insert, Delete,
+                Rotate and more.
+            </p>
+
+            <button
+                id="editorButton"
+                class="editor-button"
+            >
+                Open PDF Editor
+            </button>
+
+        </div>
+
+
+        <!-- ========================= -->
         <!-- MERGE PDF -->
         <!-- ========================= -->
 
@@ -176,178 +199,189 @@
 
 
             <button id="extractButton">
-
                 Extract Pages
-
             </button>
 
         </div>
 
 
-        <!-- SEARCH -->
+        <!-- ========================= -->
+        <!-- SEARCH PDF -->
+        <!-- ========================= -->
 
         <div class="tool-card">
 
-    <h2>Search PDF</h2>
+            <h2>Search PDF</h2>
 
-    <p>
-        Search for text inside a PDF.
-    </p>
+            <p>
+                Search for text inside a PDF.
+            </p>
 
-    <input
-        type="file"
-        id="searchPdfFile"
-        accept=".pdf"
-    >
+            <input
+                type="file"
+                id="searchPdfFile"
+                accept=".pdf"
+            >
 
-    <div
-        id="searchFileName"
-        class="selected-file"
-    ></div>
+            <div
+                id="searchFileName"
+                class="selected-file"
+            ></div>
 
-    <input
-        type="text"
-        id="searchText"
-        placeholder="Enter text to search..."
-        class="search-input"
-    >
+            <input
+                type="text"
+                id="searchText"
+                placeholder="Enter text to search..."
+                class="search-input"
+            >
 
-    <button id="searchButton">
-        Search PDF
-    </button>
+            <button id="searchButton">
+                Search PDF
+            </button>
 
-    <div id="searchResults"></div>
+            <div id="searchResults"></div>
 
-</div>
-
-
-        <!-- COMPRESS -->
-
-        <div class="tool-card">
-
-    <h2>Compress PDF</h2>
-
-    <p>
-        Reduce PDF file size.
-    </p>
-
-    <input
-        type="file"
-        id="compressPdfFile"
-        accept=".pdf"
-    >
-
-    <div
-        id="compressFileName"
-        class="selected-file"
-    ></div>
+        </div>
 
 
-    <select
-        id="compressionQuality"
-        class="compression-select"
-    >
-
-        <option value="low">
-            Strong Compression
-        </option>
-
-        <option value="medium" selected>
-            Balanced
-        </option>
-
-        <option value="high">
-            High Quality
-        </option>
-
-    </select>
-
-
-    <button id="compressButton">
-        Compress PDF
-    </button>
-
-
-    <div id="compressStatus"></div>
-
-</div>
-
-        <!-- CONVERT -->
+        <!-- ========================= -->
+        <!-- COMPRESS PDF -->
+        <!-- ========================= -->
 
         <div class="tool-card">
 
-    <h2>PDF → Images</h2>
+            <h2>Compress PDF</h2>
 
-    <p>
-        Convert PDF pages into images.
-    </p>
+            <p>
+                Reduce PDF file size.
+            </p>
 
+            <input
+                type="file"
+                id="compressPdfFile"
+                accept=".pdf"
+            >
 
-    <input
-        type="file"
-        id="convertPdfFile"
-        accept=".pdf"
-    >
-
-
-    <div
-        id="convertFileName"
-        class="selected-file"
-    ></div>
+            <div
+                id="compressFileName"
+                class="selected-file"
+            ></div>
 
 
-    <!-- Image Format -->
+            <select
+                id="compressionQuality"
+                class="compression-select"
+            >
 
-    <select
-        id="imageFormat"
-        class="compression-select"
-    >
+                <option value="low">
+                    Strong Compression
+                </option>
 
-        <option value="png">
-            PNG
-        </option>
+                <option
+                    value="medium"
+                    selected
+                >
+                    Balanced
+                </option>
 
-        <option value="jpg">
-            JPG
-        </option>
+                <option value="high">
+                    High Quality
+                </option>
 
-    </select>
-
-
-    <!-- DPI -->
-
-    <select
-        id="imageDpi"
-        class="compression-select"
-    >
-
-        <option value="72">
-            72 DPI - Fast
-        </option>
-
-        <option value="150" selected>
-            150 DPI - Balanced
-        </option>
-
-        <option value="200">
-            200 DPI - High Quality
-        </option>
-
-        <option value="300">
-            300 DPI - Very High Quality
-        </option>
-
-    </select>
+            </select>
 
 
-    <button id="convertButton">
-        Convert to Images
-    </button>
+            <button id="compressButton">
+                Compress PDF
+            </button>
 
 
-    <div id="convertStatus"></div>
+            <div id="compressStatus"></div>
 
-</div>
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- CONVERT PDF -->
+        <!-- ========================= -->
+
+        <div class="tool-card">
+
+            <h2>PDF → Images</h2>
+
+            <p>
+                Convert PDF pages into images.
+            </p>
+
+
+            <input
+                type="file"
+                id="convertPdfFile"
+                accept=".pdf"
+            >
+
+
+            <div
+                id="convertFileName"
+                class="selected-file"
+            ></div>
+
+
+            <!-- IMAGE FORMAT -->
+
+            <select
+                id="imageFormat"
+                class="compression-select"
+            >
+
+                <option value="png">
+                    PNG
+                </option>
+
+                <option value="jpg">
+                    JPG
+                </option>
+
+            </select>
+
+
+            <!-- DPI -->
+
+            <select
+                id="imageDpi"
+                class="compression-select"
+            >
+
+                <option value="72">
+                    72 DPI - Fast
+                </option>
+
+                <option
+                    value="150"
+                    selected
+                >
+                    150 DPI - Balanced
+                </option>
+
+                <option value="200">
+                    200 DPI - High Quality
+                </option>
+
+                <option value="300">
+                    300 DPI - Very High Quality
+                </option>
+
+            </select>
+
+
+            <button id="convertButton">
+                Convert to Images
+            </button>
+
+
+            <div id="convertStatus"></div>
+
+        </div>
 
 
     </div>
@@ -359,6 +393,24 @@
 
 
 <script src="js/app.js"></script>
+
+
+<script>
+
+    /*
+     * Open PDF Editor
+     */
+
+    document
+        .getElementById("editorButton")
+        .addEventListener("click", function () {
+
+            window.location.href = "editor.html";
+
+        });
+
+</script>
+
 
 </body>
 

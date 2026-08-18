@@ -13,3 +13,6 @@ Outputs/
 .idea/
 
 *.log
+
+myenv\*
+myenv/*
